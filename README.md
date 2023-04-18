@@ -2,7 +2,26 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+Make sure you have Rust installed:
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+Install imaginary:
+
+```bash
+pip install imaginairy
+```
+
+Clone this repository, and cd into it:
+
+```bash
+git clone https://github.com/0xJayden/ai-image-generator.git
+cd ai-image-generator
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
