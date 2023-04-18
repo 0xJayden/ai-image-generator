@@ -1,13 +1,16 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from "next";
+import { generateImage } from "@/generate";
 
 type Data = {
-  name: string
-}
+  // prompt: string;
+  file: { file: string };
+};
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  res.status(200).json({ name: 'John Doe' })
+  const file = await generateImage(req.body.prompt);
+  res.status(200).json({ file });
 }
