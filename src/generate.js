@@ -1,14 +1,14 @@
 const { spawn } = require("node:child_process");
 const fs = require("node:fs");
 
-if (!fs.existsSync("./tmp")) {
-  fs.mkdirSync("./tmp");
-}
+// if (!fs.existsSync("./tmp")) {
+//   fs.mkdirSync("./tmp");
+// }
 
 async function generateImage(prompt) {
   let id = Math.random().toString(36).substring(7);
 
-  while (fs.existsSync(`./tmp/${id}.jpg`)) {
+  while (fs.existsSync(`./public/${id}.jpg`)) {
     id = Math.random().toString(36).substring(7);
   }
 
@@ -37,20 +37,6 @@ async function generateImage(prompt) {
   fs.renameSync(`./${outputDir}/generated/${jpegs[0]}`, file);
 
   fs.rmSync(`./${outputDir}`, { recursive: true });
-
-  // fs.open(file, undefined, (err, fd) => {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     fs.fsync(fd, (err) => {
-  //       if (err) {
-  //         console.log(err);
-  //       } else {
-  //         console.log("File synced");
-  //       }
-  //     });
-  //   }
-  // });
 
   return { file };
 }

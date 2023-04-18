@@ -1,8 +1,6 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-// import { generateImage } from "../generate";
-import { BaseSyntheticEvent, useEffect, useState } from "react";
-import two from "../assets/images/2.jpg";
+import { BaseSyntheticEvent, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,10 +35,6 @@ export default function Home() {
       });
   };
 
-  const myLoader = ({ src, width }: { src: string; width: number }) => {
-    return src;
-  };
-
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-2">
       <div className="z-10 space-y-4 w-full max-w-5xl items-center text-center flex flex-col font-mono text-sm">
@@ -53,8 +47,9 @@ export default function Home() {
             onChange={(e) => setPrompt(e.target.value)}
           />
           <button
+            disabled={loading}
             type="submit"
-            className="border p-2 border-zinc-500"
+            className={`border p-2 border-zinc-500 ${loading && "opacity-30"}`}
             onClick={(e) => generateImage(e, prompt)}
           >
             Generate
